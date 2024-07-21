@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Initialize an empty array to hold modified arguments
+args=()
+
+# Variable to track if we should skip modification
+skip_modification=false
+
+# First pass to check the BLACKLIST
+for (( i=1; i <= $#; i++ )); do
+    if [[ "${!i}" == "/dev/sda" || "${!i}" == "/dev/sdb" || "${!i}" == "/dev/sdc" ]]; then
+        skip_modification=true
+    fi
+done
+
+# Second pass to process and potentially modify the arguments
+while [[ $# -gt 0 ]]; do
+    if [[ "$1" == "-d" ]] && [[ "$2" == "ata" ]] && [[ "$skip_modification" == false ]]; then
+        args+=("-d")
+        args+=("sat")
+        shift 2
+    else
+        args+=("$1")
+        shift
+    fi
+done
+
+# Execute /bin/smartctl-binary with the modified arguments
+/bin/smartctl-binary "${args[@]}"
