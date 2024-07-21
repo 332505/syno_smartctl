@@ -1,4 +1,4 @@
-Fix synology SMART info while using HBA card.
+Fix synology SMART info while using HBA card. (not for DSM7.2.1 or later)
 
 Useage:
 1. Replace the black list in this smartctl for the disks not on your HBA card.
