@@ -1,4 +1,4 @@
-Some version of Synology DSM would get wrong SMART info while using HBA card, and this script can fix it. (Not for showing the SMART info on DSM7.2.1 or later)
+Some versions of Synology DSM would get wrong SMART info while using HBA card, and this script can fix it. (Not for showing the SMART info on DSM7.2.1 or later)
 
 Useage:
 1. Rename the smartctl in `/bin` to smartctl-binary.
